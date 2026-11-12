@@ -1,0 +1,92 @@
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 960px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+}
+
+header {
+    background: #2204e4;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+}
+
+nav.menu {
+    margin: 1rem 0;
+}
+
+nav.menu a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #150404f7;
+    font-weight: 600;
+}
+
+nav.menu a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background: #e60909;
+    color: white;
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+}
+
+.messages li {
+    background: #e8f5e9;
+    padding: 0.5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 4px;
+}
+
+button, .btn {
+    background: #1b0101;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+a.btn {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.kpi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.kpi article {
+    background: #f0f4f8;
+    padding: 1rem;
+    border-radius: 6px;
+    min-width: 120px;
+    text-align: center;
+}
+
+footer {
+    margin-top: 2rem;
+    color: #777777;
+    font-size: 0.85rem;
+}

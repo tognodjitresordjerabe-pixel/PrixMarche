@@ -1,0 +1,80 @@
+{% extends "prix/base.html" %}
+
+{% block titre %}{{ titre }}{% endblock %}
+
+{% block contenu %}
+    <h2>{{ titre }}</h2>
+
+    <p>
+        <a class="btn" href="{% url creer_url %}">Ajouter</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                {% for col in colonnes %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in lignes %}
+                <tr>
+                    {% if type_objet == "produit" %}
+                        <td>{{ obj.code_produit }}</td>
+                        <td>{{ obj.libelle }}</td>
+                        <td>{{ obj.get_unite_display }}</td>
+                        <td>
+                            <a href="{% url 'prix:produit_modifier' obj.pk %}">Modifier</a> |
+                            <a href="{% url 'prix:produit_supprimer' obj.pk %}">Supprimer</a>
+                        </td>
+
+                    {% elif type_objet == "marche" %}
+                        <td>{{ obj.code_marche }}</td>
+                        <td>{{ obj.nom_marche }}</td>
+                        <td>{{ obj.ville }}</td>
+                        <td>
+                            <a href="{% url 'prix:marche_modifier' obj.pk %}">Modifier</a> |
+                            <a href="{% url 'prix:marche_supprimer' obj.pk %}">Supprimer</a>
+                        </td>
+
+                    {% elif type_objet == "enqueteur" %}
+                        <td>{{ obj.matricule }}</td>
+                        <td>{{ obj.nom_enq }}</td>
+                        <td>{{ obj.telephone }}</td>
+                        <td>
+                            <a href="{% url 'prix:enqueteur_modifier' obj.pk %}">Modifier</a> |
+                            <a href="{% url 'prix:enqueteur_supprimer' obj.pk %}">Supprimer</a>
+                        </td>
+
+                    {% elif type_objet == "affectation" %}
+                        <td>{{ obj.enqueteur }}</td>
+                        <td>{{ obj.marche }}</td>
+                        <td>{{ obj.date_debut|date:"d/m/Y" }}</td>
+                        <td>
+                            <a href="{% url 'prix:affectation_modifier' obj.pk %}">Modifier</a> |
+                            <a href="{% url 'prix:affectation_supprimer' obj.pk %}">Supprimer</a>
+                        </td>
+
+                    {% elif type_objet == "releve" %}
+                        <td>{{ obj.date_releve|date:"d/m/Y" }}</td>
+                        <td>{{ obj.produit.libelle }}</td>
+                        <td>{{ obj.marche.nom_marche }}</td>
+                        <td>{{ obj.prix }} FCFA</td>
+                        <td>{{ obj.enqueteur.nom_enq }}</td>
+                        <td>
+                            <a href="{% url 'prix:releve_detail' obj.pk %}">Voir</a> |
+                            <a href="{% url 'prix:releve_modifier' obj.pk %}">Modifier</a> |
+                            <a href="{% url 'prix:releve_supprimer' obj.pk %}">Supprimer</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="10">Aucun enregistrement.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

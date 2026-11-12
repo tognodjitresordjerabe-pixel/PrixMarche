@@ -1,0 +1,31 @@
+{% extends "prix/base.html" %}
+
+{% block titre %}Accueil – PrixMarché{% endblock %}
+
+{% block contenu %}
+    <h2>Bienvenue dans PrixMarché</h2>
+    <p>Collecte et consultation des prix sur les marchés.</p>
+
+    <section class="kpi">
+        <article>
+            <strong>{{ compteurs.produits }}</strong><br>
+            Produits
+        </article>
+        <article>
+            <strong>{{ compteurs.marches }}</strong><br>
+            Marchés
+        </article>
+        <article>
+            <strong>{{ compteurs.enqueteurs }}</strong><br>
+            Enquêteurs
+        </article>
+        <article>
+            <strong>{{ compteurs.affectations }}</strong><br>
+            Affectations
+        </article>
+        <article>
+            <strong>{{ compteurs.releves }}</strong><br>
+            Relevés
+        </article>
+    </section>
+{% endblock %}
